@@ -9,12 +9,13 @@ namespace x509CertString
         {
             do
             {
-                Console.Write("Enter Cert Path: ");
+                Console.Write("Enter pfx Cert Path: ");
                 var certPath = Console.ReadLine();
-
+                Console.Write("Enter pfx Cert Password: ");
+                var certPass = Console.ReadLine();
                 try
                 {
-                    var cert = X509Certificate.CreateFromCertFile(certPath);
+                    X509Certificate cert = new X509Certificate(certPath, certPass);
                     var results = cert.GetPublicKeyString();
                     Console.WriteLine(results);
                 }
